@@ -1,12 +1,13 @@
-﻿namespace Maui.Montemagno.Todo;
+﻿using Maui.Montemagno.Todo.ViewModels;
+
+namespace Maui.Montemagno.Todo;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
-	public MainPage()
+	public MainPage(MainViewModel vm)
 	{
 		InitializeComponent();
+		BindingContext = vm;
 	}
 }
 
