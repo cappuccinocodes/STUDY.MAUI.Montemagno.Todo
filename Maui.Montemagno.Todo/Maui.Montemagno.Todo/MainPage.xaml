@@ -5,6 +5,10 @@
              xmlns:viewmodel="clr-namespace:Maui.Montemagno.Todo.ViewModels"
              x:DataType="viewmodel:MainViewModel">
 
+    <ContentPage.BindingContext>
+        <viewmodel:MainViewModel />
+    </ContentPage.BindingContext>
+    
     <Grid RowDefinitions="Auto, *"
           ColumnDefinitions=".75*, .25*"
           Padding="10">
@@ -16,7 +20,8 @@
                 Grid.Column="2"/>
 
         <CollectionView Grid.Row="2" Grid.ColumnSpan="2"
-                        ItemsSource="{Binding Items}">
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type x:String}">
                     <SwipeView>
@@ -30,6 +35,13 @@
                         </SwipeView.RightItems>
                         <Grid Padding="0,5">
                             <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                           CommandParameter="{Binding .}"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=TapCommand}"
+                                           />
+                                </Frame.GestureRecognizers>
+                         
                                 <Label Text="{Binding .}"/>
                             </Frame>
                         </Grid>
