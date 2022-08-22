@@ -5,10 +5,6 @@
              xmlns:viewmodel="clr-namespace:Maui.Montemagno.Todo.ViewModels"
              x:DataType="viewmodel:MainViewModel">
 
-    <ContentPage.BindingContext>
-        <viewmodel:MainViewModel />
-    </ContentPage.BindingContext>
-    
     <Grid RowDefinitions="Auto, *"
           ColumnDefinitions=".75*, .25*"
           Padding="10">
